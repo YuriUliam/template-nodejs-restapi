@@ -1,10 +1,10 @@
 import 'dotenv/config';
 
-const { DB_DIALECT, DB_HOST, DB_NAME, DB_USER, DB_PASS } = process.env;
+const { DB_HOST, DB_NAME, DB_USER, DB_PASS } = process.env;
 
 module.exports = {
   database: {
-    dialect: DB_DIALECT,
+    dialect: '',
     host: DB_HOST,
     username: DB_USER,
     password: DB_PASS,
