@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-const routes = new Router();
+import apiController from './app/controllers/api.controller'
 
-routes.get('/', (req, res) => res.json({
-  message: 'Rest API Funcionando!'
-}));
+const routes = Router();
+
+routes.get('/', apiController.index);
 
 export default routes;

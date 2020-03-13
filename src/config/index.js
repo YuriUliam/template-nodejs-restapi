@@ -1,31 +1,43 @@
-import 'dotenv/config';
+import 'dotenv/config'
 
-const { NODE_ENV = 'development' } = process.env;
+const { NODE_ENV = 'development' } = process.env
 
-const dev = require('./config');
-const prod = require('./config.prod');
-const test = require('./config.test');
+import { database as dev } from './config'
+import { database as prod } from './config.prod'
+import { database as test } from './config.test'
 
-class Enviroment {
+/**
+ * @typedef {import('sequelize').Options} sequelizeOptions
+ */
+
+/**
+ * @class
+ * @namespace
+ */
+class DatabaseEnviroment {
   constructor() {
-    this.env = '';
+    /**
+     * @type {sequelizeOptions}
+     */
+    this.env = null
 
-    this.getEnv();
+    this.getEnv()
   }
 
+  /** @private */
   getEnv() {
     switch (NODE_ENV) {
       case 'production':
-        this.env = prod;
-        break;
+        this.env = prod
+        break
       case 'test':
-        this.env = test;
-        break;
-      default:
-        this.env = dev;
-        break;
+        this.env = test
+        break
+      default: // case 'development'
+        this.env = dev
+        break
     }
   }
 }
 
-module.exports = new Enviroment().env;
+export default new DatabaseEnviroment().env

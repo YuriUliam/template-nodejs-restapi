@@ -1,6 +1,6 @@
-import Sequelize from 'sequelize';
+import { Sequelize } from 'sequelize'
 
-import { database } from '../config';
+import database from '../config';
 
 class Database {
   constructor() {
